@@ -1,0 +1,6 @@
+coverage.out
+*.test
+*.exe
+gtr_modules/
+go.mod
+go.work
