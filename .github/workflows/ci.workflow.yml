@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-24.04, windows-latest, macos-latest]
         go: ["1.22", "stable"] # minimum (ADR-0007) and latest
         exclude:
           # Go 1.22 links binaries without LC_UUID, and dyld on current macOS runners refuses
@@ -32,8 +32,8 @@ jobs:
           - os: macos-latest
             go: "1.22"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5 # gtr-manager itself needs the latest Go
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6 # gtr-manager itself needs the latest Go
         with:
           go-version: stable
           cache: false
@@ -46,7 +46,7 @@ jobs:
           git clone --depth 1 https://github.com/shibisty/gtr-manager "$RUNNER_TEMP/gtr-manager"
           (cd "$RUNNER_TEMP/gtr-manager" && go build -o "$RUNNER_TEMP/gtr-bin/gtr$(go env GOEXE)" ./cmd/gtr-manager)
           echo "$RUNNER_TEMP/gtr-bin" >> "$GITHUB_PATH"
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: ${{ matrix.go }}
           cache: false
@@ -55,7 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: gtr install # switch to `gtr ci` once gtr.lock is committed
       - name: gofmt
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-24.04'
         shell: bash
         run: test -z "$(gofmt -l .)" || (gofmt -l . && exit 1)
       - name: vet
@@ -64,7 +64,7 @@ jobs:
         shell: bash # PowerShell on Windows splits -coverprofile=coverage.out
         run: go test -race -count=1 -coverpkg="$(go list ./... | paste -sd, -)" -coverprofile=coverage.out ./... # -coverpkg: the package's own packages (`./...` would also match gtr_modules); test helpers are counted via the packages that use them
       - name: coverage >= 80%
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-24.04'
         shell: bash
         run: |
           total=$(go tool cover -func=coverage.out | awk '/^total:/ {sub("%","",$3); print $3}')
