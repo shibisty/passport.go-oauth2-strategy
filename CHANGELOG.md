@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.1 — 2026-11-19
+
 ### Changed
 - Renamed from `passport-oauth2` to `@passport/oauth2` (gtr ADR-0012): `gtr add @passport/oauth2`, `import "passport/oauth2"`; published to the gtr registry. Dependencies on other passport packages are registry ranges (`^0.2`) instead of `github:` sources.
 - Requires `passport ^0.2` (the first published release of the core; `^0.1` matched no tag).
