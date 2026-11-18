@@ -1,5 +1,5 @@
 // Package oauth2 implements a generic login strategy for the OAuth2 Authorization
-// Code flow, using only the standard library. gtr package: passport-oauth2.
+// Code flow, using only the standard library. gtr package: @passport/oauth2.
 //
 // Providers differ in endpoints and profile fields, so a strategy for a
 // specific provider is just a Config plus a profile-mapping function:
@@ -14,7 +14,7 @@
 //		return &passport.Identity{ProviderUserID: oauth2.String(p, "id"), Name: oauth2.String(p, "name")}, nil
 //	})
 //
-// This is how passport-google and passport-facebook are built.
+// This is how passport/google and passport/facebook are built.
 package oauth2
 
 import (

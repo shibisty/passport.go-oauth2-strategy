@@ -1,14 +1,14 @@
-# passport-oauth2
+# @passport/oauth2
 
 A generic OAuth2 strategy (Authorization Code flow) for
 [passport](https://github.com/shibisty/passport.go). Standard library only.
-`passport-google` and `passport-facebook` are built on it; any other provider is
+`@passport/google` and `@passport/facebook` are built on it; any other provider is
 just a `Config` and a profile-mapping function:
 
 ## Installation
 
 ```bash
-gtr add github:shibisty/passport.go github:shibisty/passport.go-oauth2-strategy
+gtr add passport @passport/oauth2
 ```
 
 `passport` is a peer dependency (`^0.1`): the application adds it, and every strategy
@@ -16,7 +16,7 @@ plugs into the same `Authenticator`.
 
 ## Usage
 
-Import as `oauth2 "passport-oauth2"` (Go package `oauth2`), next to `"passport"`.
+Import as `oauth2 "passport/oauth2"` (Go package `oauth2`), next to `"passport"`.
 
 ```go
 github := oauth2.New("github", oauth2.Config{

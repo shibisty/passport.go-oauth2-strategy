@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"passport"
-	"passport-oauth2"
-	"passport-oauth2/oauth2test"
+	"passport/oauth2"
+	"passport/oauth2/oauth2test"
 )
 
 func oidcMapper(p map[string]any) (*passport.Identity, error) {

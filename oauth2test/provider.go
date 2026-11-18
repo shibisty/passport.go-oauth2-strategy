@@ -1,5 +1,5 @@
 // Package oauth2test provides a fake httptest-based OAuth2 provider for testing
-// strategies (passport-google, passport-facebook, your own).
+// strategies (passport/google, passport/facebook, your own).
 //
 //	p := oauth2test.NewProvider(t, map[string]any{"sub": "42", "email": "a@x"})
 //	cfg.TokenURL, cfg.UserInfoURL = p.TokenURL(), p.UserInfoURL()

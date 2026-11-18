@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/shibisty/gtr/main/schema/gtr.schema.json",
-    "name": "passport-oauth2",
-    "version": "0.1.0",
+    "name": "@passport/oauth2",
+    "version": "0.2.0",
     "license": "MIT",
     "repository": "github:shibisty/passport.go-oauth2-strategy",
     "engines": {
         "go": ">=1.22"
     },
     "devDependencies": {
-        "passport": "github:shibisty/passport.go"
+        "passport": "^0.2"
     },
     "peerDependencies": {
         "passport": "^0.2"
